@@ -9,9 +9,7 @@ namespace PDFReader.Structures
     public class AppParameters
     {
         private int _charactersTo,
-                    _charactersAfter,
-                    _maxCharactersTo,
-                    _maxCharactersAfter;
+                    _charactersAfter;
 
         private const int _defaultCharsTo = 10,
                           _defaultCharsAfter = 10;
@@ -26,18 +24,6 @@ namespace PDFReader.Structures
         {
             get => _charactersAfter;
             set { _charactersAfter = value; }
-        }
-
-        public int MaxCharactersTo
-        {
-            get => _maxCharactersTo;
-            set { _maxCharactersTo = value; }
-        }
-
-        public int MaxCharactersAfter
-        {
-            get => _maxCharactersAfter;
-            set { _maxCharactersAfter = value; }
         }
 
         public AppParameters(int charactersTo, int charactersAfter)
@@ -57,6 +43,15 @@ namespace PDFReader.Structures
             Settings.Default.charactersTo = CharactersTo;
             Settings.Default.charactersAfter = CharactersAfter;
             Settings.Default.Save();
+        }
+
+        public void ResetToDeafault()
+        {
+            Settings.Default.charactersTo = _defaultCharsTo;
+            Settings.Default.charactersAfter = _defaultCharsAfter;
+            Settings.Default.Save();
+            CharactersTo = Settings.Default.charactersTo;
+            CharactersAfter = Settings.Default.charactersAfter;
         }
     }
 }

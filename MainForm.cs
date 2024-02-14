@@ -263,7 +263,7 @@ namespace PDFReader
 
             TableForm tb = new TableForm(estimatesDictionary);
 
-            var application = new Microsoft.Office.Interop.Excel.Application();
+            var application = new Microsoft.Office.Interop.Excel.Application(); // by Alexey Tolstopyatov
             var book = application.Workbooks.Add(Type.Missing);
             var list = new Worksheet();
 
