@@ -62,7 +62,8 @@ namespace PDFReader
             var searchDataParameters = new SearchParameters("Дата: ", "Дата", "[0-9]{2}[.][0-9]{2}[.][0-9]{4}", 10);
             var searchLinkParameters = new SearchParameters("Ссылка", @"\w*\.(?:com|ru)"); //(https?:\/\/|ftps?:\/\/|www\.)((?![.,?!;:()]*(\s|$))[^\s]){2,}\/
             var searchSuplierParameters = new SearchParameters("Поставщик", new List<string> { "(?:О{3}|ИП) \"(?:[^\"]+|[^\"/s])\"", @"ИП (?:[^\s]\w*\s\w*\s\w*|[^\s]\w*\s\w\.\s\w\.)" });
-            
+            var searchPriceParameters = new SearchParameters("Цена", new List<string> { @"(?:(\d+ |\d+)(\d+руб\.|\d+ руб\.))|((руб\.\d+|руб\. \d+)(?:\d+| \d+))", @"(?:(\d+ |\d+)(\d+₽|\d+ ₽))|((₽\d+|₽ \d+)(?:\d+| \d+))" });
+
             for (int page = 1; page <= reader.NumberOfPages; page++)
             {
                 string currentText = PdfTextExtractor.GetTextFromPage(reader, page);
@@ -78,6 +79,7 @@ namespace PDFReader
                 await Task.Run(() => SearchRegexListAsync(currentText, searchSuplierParameters));
                 await Task.Run(() => SearchRegexAsync(currentText, searchLinkParameters));
                 await Task.Run(() => SearchByWords(currentText, "Оборудование"));
+                await Task.Run(() => SearchRegexListAsync(currentText, searchPriceParameters)); //(?:(\d+ |\d+)(\d+руб\.|\d+ руб\.))|((руб\.\d+|руб\. \d+)(?:\d+| \d+))
 
                 estimatesDictionary["Стр"].Add($"{page}");
                 debugBox.AppendText($"{currentText}\n\nСтраница: {page}\n\n");

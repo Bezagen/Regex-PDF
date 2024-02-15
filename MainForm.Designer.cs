@@ -56,7 +56,7 @@ namespace PDFReader
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(107, 13);
             this.label1.TabIndex = 5;
-            this.label1.Text = "Vesion: InDev 13128";
+            this.label1.Text = "Vesion: InDev 16131";
             // 
             // MenuPanel
             // 

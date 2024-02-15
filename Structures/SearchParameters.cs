@@ -44,7 +44,7 @@ namespace PDFReader.Structures
             _regexPattern = regexPattern;
         }
 
-        public SearchParameters(string estimateKey, List<string> regexPatterns)
+        public SearchParameters(string estimateKey, List<string> regexPatterns) //For RegexList search
         {
             _estimateKey = estimateKey;
             _regexPatterns = regexPatterns;
