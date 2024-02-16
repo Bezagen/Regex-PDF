@@ -54,9 +54,9 @@ namespace PDFReader
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(12, 428);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(107, 13);
+            this.label1.Size = new System.Drawing.Size(118, 13);
             this.label1.TabIndex = 5;
-            this.label1.Text = "Vesion: InDev 16131";
+            this.label1.Text = "Vesion: PreRelease 1.0";
             // 
             // MenuPanel
             // 

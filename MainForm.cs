@@ -62,7 +62,13 @@ namespace PDFReader
             var searchDataParameters = new SearchParameters("Дата: ", "Дата", "[0-9]{2}[.][0-9]{2}[.][0-9]{4}", 10);
             var searchLinkParameters = new SearchParameters("Ссылка", @"\w*\.(?:com|ru)"); //(https?:\/\/|ftps?:\/\/|www\.)((?![.,?!;:()]*(\s|$))[^\s]){2,}\/
             var searchSuplierParameters = new SearchParameters("Поставщик", new List<string> { "(?:О{3}|ИП) \"(?:[^\"]+|[^\"/s])\"", @"ИП (?:[^\s]\w*\s\w*\s\w*|[^\s]\w*\s\w\.\s\w\.)" });
-            var searchPriceParameters = new SearchParameters("Цена", new List<string> { @"(?:(\d+ |\d+)(\d+руб\.|\d+ руб\.))|((руб\.\d+|руб\. \d+)(?:\d+| \d+))", @"(?:(\d+ |\d+)(\d+₽|\d+ ₽))|((₽\d+|₽ \d+)(?:\d+| \d+))" });
+            var searchPriceParameters = new SearchParameters("Цена", 
+                new List<string> 
+                {
+                    @"((?<FirstNum>\d+ |\d+)(\d+\,\d+|\d+\.\d+|\d+)(?<FirstLiteral> руб\.|руб\.))|((?<SecondLiteral>руб\. |руб\.)(\d+\,\d+|\d+\.\d+|\d+)(?<SecondNum> \d+|\d+))",
+                    @"((?<FirstNum>\d+ |\d+)(\d+\,\d+|\d+\.\d+|\d+)(?<FirstLiteral> ₽|₽))|((?<SecondLiteral>₽ |₽)(\d+\,\d+|\d+\.\d+|\d+)(?<SecondNum> \d+|\d+))",
+                    @"((?<FirstNum>\d+ |\d+)(\d+\,\d+|\d+\.\d+|\d+)(?<FirstLiteral> Р|Р))|((?<SecondLiteral>Р |Р)(\d+\,\d+|\d+\.\d+|\d+)(?<SecondNum> \d+|\d+))"
+                });
 
             for (int page = 1; page <= reader.NumberOfPages; page++)
             {

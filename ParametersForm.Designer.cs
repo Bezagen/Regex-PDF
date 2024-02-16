@@ -35,6 +35,7 @@ namespace PDFReader
             this.CharsAfterWord = new System.Windows.Forms.TextBox();
             this.AplyButton = new System.Windows.Forms.Button();
             this.CancelButton = new System.Windows.Forms.Button();
+            this.EquipmentButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // CharsBeforeWord
@@ -103,12 +104,26 @@ namespace PDFReader
             this.CancelButton.UseVisualStyleBackColor = false;
             this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
+            // EquipmentButton
+            // 
+            this.EquipmentButton.BackColor = System.Drawing.Color.White;
+            this.EquipmentButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.EquipmentButton.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.EquipmentButton.Location = new System.Drawing.Point(12, 99);
+            this.EquipmentButton.Name = "EquipmentButton";
+            this.EquipmentButton.Size = new System.Drawing.Size(131, 49);
+            this.EquipmentButton.TabIndex = 6;
+            this.EquipmentButton.Text = "Открыть файл оборудования\r\n";
+            this.EquipmentButton.UseVisualStyleBackColor = false;
+            this.EquipmentButton.Click += new System.EventHandler(this.EquipmentButton_Click);
+            // 
             // ParametersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(287, 378);
+            this.Controls.Add(this.EquipmentButton);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.AplyButton);
             this.Controls.Add(this.CharsAfterWord);
@@ -132,5 +147,6 @@ namespace PDFReader
         private System.Windows.Forms.TextBox CharsAfterWord;
         private System.Windows.Forms.Button AplyButton;
         private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.Button EquipmentButton;
     }
 }

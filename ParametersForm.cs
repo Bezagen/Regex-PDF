@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,6 +32,7 @@ namespace PDFReader
                 appParameters.CharactersTo = Convert.ToInt32(CharsBeforeWord.Text);
                 appParameters.CharactersAfter = Convert.ToInt32(CharsAfterWord.Text);
                 appParameters.SaveParameters();
+                MessageBox.Show("Сохранено", "Успех", MessageBoxButtons.OK);
             }
             else
             {
@@ -70,6 +73,17 @@ namespace PDFReader
         private void CharsAfterWord_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void EquipmentButton_Click(object sender, EventArgs e)
+        {
+            if(File.Exists(AppDomain.CurrentDomain.BaseDirectory + "Equipment.txt"))
+                Process.Start(AppDomain.CurrentDomain.BaseDirectory+"Equipment.txt");
+            else
+            {
+                MessageBox.Show("Файл оборудования не существует\nБудет создан новый", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                File.Create(AppDomain.CurrentDomain.BaseDirectory + "Equipment.txt");
+            }
         }
     }
 }
